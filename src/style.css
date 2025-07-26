@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Use a .dark class instead of media query for dark: utilities */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #3B82F6;
+}
+
+@layer base {
+  :root {
+    --color-background: #FFFFFF;
+    --color-text: #000000;
+  }
+  .dark {
+    --color-background: #0A0A0A;
+    --color-text: #FFFFFF;
+  }
+  html {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    color-scheme: light dark;
+  }
+}

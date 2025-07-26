@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>MTDV (Pages)</title>
+
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var system = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          var t = saved || system;
+          document.documentElement.classList.toggle('dark', t === 'dark');
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
