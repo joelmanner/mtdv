@@ -17,7 +17,7 @@ export default function App() {
     <div className="min-h-screen px-8 py-8 md:px-16 md:py-12">
       <div className="max-w-sm mx-auto">
         <header className="flex justify-center mb-8 md:mb-12">
-          <Logo className="h-12 md:h-16 max-w-xs [&_svg]:h-full [&_svg]:w-auto" />
+          <Logo className="h-16 max-w-xs [&_svg]:h-full [&_svg]:w-auto" />
         </header>
 
         <div className="relative">
