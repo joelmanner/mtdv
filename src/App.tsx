@@ -35,7 +35,7 @@ export default function App() {
             <ThemeToggle />
           </nav>
 
-          <nav className="flex md:hidden flex-col gap-1 mb-4 pb-4 text-sm">
+          <nav className="flex md:hidden flex-col gap-1 mb-4 pb-4 text-base">
             {navItems.map((item) => (
               <Link
                 key={item.label}

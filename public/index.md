@@ -1,1 +1,1 @@
-We’re a digital product experimentation company.
+We’re a digital product lab.
