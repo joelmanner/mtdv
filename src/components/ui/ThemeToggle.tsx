@@ -11,7 +11,7 @@ export function ThemeToggle() {
       aria-label="Toggle color scheme"
     >
       {theme === 'light' ? <DarkIcon className="w-5 h-5 md:w-6 md:h-6" /> : <LightIcon className="w-5 h-5 md:w-6 md:h-6" />}
-      <span className="tracking-wide md:text-lg">THEME</span>
+      <span className="tracking-wide">THEME</span>
     </button>
   )
 }
