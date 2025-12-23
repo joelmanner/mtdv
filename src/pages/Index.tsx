@@ -15,6 +15,10 @@ export default function Index() {
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
+    document.title = 'MTDV'
+  }, [])
+
+  useEffect(() => {
     fetch('/index.md')
       .then((res) => res.text())
       .then(setContent)

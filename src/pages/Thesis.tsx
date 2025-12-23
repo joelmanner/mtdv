@@ -5,6 +5,10 @@ export default function Thesis() {
   const [content, setContent] = useState('')
 
   useEffect(() => {
+    document.title = 'MTDV / Thesis'
+  }, [])
+
+  useEffect(() => {
     fetch('/thesis.md')
       .then((res) => res.text())
       .then(setContent)
