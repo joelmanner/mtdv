@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: 'VT323';
+  src: url('/fonts/VT323-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
 @theme {
   --color-bg: #e8eef4;
   --color-text: #4a5a78;
