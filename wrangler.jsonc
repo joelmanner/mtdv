@@ -1,6 +1,10 @@
 {
   "name": "mtdv",
   "compatibility_date": "2025-12-23",
+  "routes": [
+    { "pattern": "mtdv.xyz", "custom_domain": true },
+    { "pattern": "www.mtdv.xyz", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
