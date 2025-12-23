@@ -15,7 +15,9 @@ export default function Index() {
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    document.title = 'MTDV'
+    document.title = 'Mtdv'
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', 'Mtdv')
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', 'Mtdv')
   }, [])
 
   useEffect(() => {

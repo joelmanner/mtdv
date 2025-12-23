@@ -5,8 +5,10 @@ export default function Thesis() {
   const [content, setContent] = useState('')
 
   useEffect(() => {
-    document.title = 'MTDV / Thesis'
-  }, [])
+    document.title = 'Mtdv / Thesis'
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', 'Mtdv / Thesis')
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', 'Mtdv / Thesis')
+  }, [])    
 
   useEffect(() => {
     fetch('/thesis.md')
