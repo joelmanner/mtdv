@@ -27,6 +27,8 @@ export default function Index() {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  if (!content) return null
+
   return (
     <>
       <article className="prose max-w-none">
