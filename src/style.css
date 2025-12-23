@@ -10,7 +10,7 @@
 @theme {
   --breakpoint-md: 885px;
   --color-bg: #e8eef4;
-  --color-text: #4a5a78;
+  --color-text: #6c7a94;
 }
 
 @layer base {
@@ -30,20 +30,20 @@
   /* System dark mode */
   @media (prefers-color-scheme: dark) {
     html:not(.light) {
-      --color-bg: #4a5568;
+      --color-bg: #434d5e;
       --color-text: #e8eef4;
     }
   }
 
   /* Manual overrides */
   html.dark {
-    --color-bg: #4a5568;
+    --color-bg: #434d5e;
     --color-text: #e8eef4;
   }
 
   html.light {
     --color-bg: #e8eef4;
-    --color-text: #4a5a78;
+    --color-text: #6c7a94;
   }
 
   body {

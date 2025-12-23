@@ -2,7 +2,10 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { ThemeContext, type Theme } from '@/contexts/ThemeContext'
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [override, setOverride] = useState<Theme | null>(null)
+  const [override, setOverride] = useState<Theme | null>(() => {
+    const stored = localStorage.getItem('theme-override')
+    return stored === 'light' || stored === 'dark' ? stored : null
+  })
   const [systemTheme, setSystemTheme] = useState<Theme>('light')
 
   useEffect(() => {
@@ -25,7 +28,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [override])
 
   const toggleTheme = () => {
-    setOverride(prev => (prev ?? systemTheme) === 'light' ? 'dark' : 'light')
+    setOverride(prev => {
+      const next = (prev ?? systemTheme) === 'light' ? 'dark' : 'light'
+      localStorage.setItem('theme-override', next)
+      return next
+    })
   }
 
   const value = useMemo(() => ({ theme, toggleTheme }), [theme])
