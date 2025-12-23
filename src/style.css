@@ -11,7 +11,13 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: 'VT323', monospace;
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
   }
 
   /* System dark mode */
