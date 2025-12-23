@@ -2,25 +2,30 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { ThemeContext, type Theme } from '@/contexts/ThemeContext'
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [override, setOverride] = useState<Theme | null>(null)
+  const [systemTheme, setSystemTheme] = useState<Theme>('light')
 
   useEffect(() => {
-    const saved = localStorage.getItem('theme') as Theme | null
-    const system: Theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const initial = saved ?? system
-    setTheme(initial)
-    document.documentElement.classList.toggle('dark', initial === 'dark')
-    const meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
-    if (meta) meta.content = initial === 'dark' ? '#0A0A0A' : '#FFFFFF'
+    const mq = matchMedia('(prefers-color-scheme: dark)')
+    setSystemTheme(mq.matches ? 'dark' : 'light')
+
+    const handler = (e: MediaQueryListEvent) => setSystemTheme(e.matches ? 'dark' : 'light')
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
   }, [])
 
+  const theme = override ?? systemTheme
+
+  useEffect(() => {
+    const html = document.documentElement
+    html.classList.remove('light', 'dark')
+    if (override) {
+      html.classList.add(override)
+    }
+  }, [override])
+
   const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : 'light'
-    setTheme(next)
-    localStorage.setItem('theme', next)
-    document.documentElement.classList.toggle('dark', next === 'dark')
-    const meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
-    if (meta) meta.content = next === 'dark' ? '#0A0A0A' : '#FFFFFF'
+    setOverride(prev => (prev ?? systemTheme) === 'light' ? 'dark' : 'light')
   }
 
   const value = useMemo(() => ({ theme, toggleTheme }), [theme])

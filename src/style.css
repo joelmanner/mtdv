@@ -1,24 +1,58 @@
 @import "tailwindcss";
-
-/* Use a .dark class instead of media query for dark: utilities */
-@custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/typography";
 
 @theme {
-  --color-primary: #3B82F6;
+  --color-bg: #e8eef4;
+  --color-text: #4a5a78;
 }
 
 @layer base {
-  :root {
-    --color-background: #FFFFFF;
-    --color-text: #000000;
-  }
-  .dark {
-    --color-background: #0A0A0A;
-    --color-text: #FFFFFF;
-  }
   html {
-    background-color: var(--color-background);
+    background-color: var(--color-bg);
     color: var(--color-text);
-    color-scheme: light dark;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+  }
+
+  /* System dark mode */
+  @media (prefers-color-scheme: dark) {
+    html:not(.light) {
+      --color-bg: #4a5568;
+      --color-text: #e8eef4;
+    }
+  }
+
+  /* Manual overrides */
+  html.dark {
+    --color-bg: #4a5568;
+    --color-text: #e8eef4;
+  }
+
+  html.light {
+    --color-bg: #e8eef4;
+    --color-text: #4a5a78;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  /* Force ALL text to use theme color */
+  * {
+    color: inherit;
+  }
+
+  .prose p,
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose li,
+  .prose a,
+  .prose strong,
+  .prose em,
+  .prose code,
+  .prose blockquote {
+    color: var(--color-text) !important;
   }
 }

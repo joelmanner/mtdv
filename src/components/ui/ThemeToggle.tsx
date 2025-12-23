@@ -1,16 +1,17 @@
 import { useTheme } from '@/contexts/ThemeContext'
-import { Moon, Sun } from 'lucide-react'
+import { LightIcon, DarkIcon } from '@/components/Icons'
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
+
   return (
     <button
       onClick={toggleTheme}
-      className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800"
+      className="flex items-center gap-3 py-1 hover:opacity-70 transition-opacity cursor-pointer"
       aria-label="Toggle color scheme"
     >
-      {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-      <span className="text-sm">{theme === 'light' ? 'Dark' : 'Light'} mode</span>
+      {theme === 'light' ? <DarkIcon className="w-6 h-6" /> : <LightIcon className="w-6 h-6" />}
+      <span className="text-lg tracking-wide">THEME</span>
     </button>
   )
 }
